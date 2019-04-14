@@ -53,7 +53,7 @@
     </div>
     <div class="contents" id="nav-content">
         <ul>
-            <li class="active">
+            <li>
                 <a href="/">
                     <i class="iconfont icon-shouye1"></i>
                     <span>主页</span>
@@ -88,6 +88,10 @@
         </ul>
     </div>
     
+        <div id="toc" class="toc-article">
+    
+</div>
+    
 </div>
 
 
@@ -111,87 +115,37 @@
     <div class="index-middle">
         <!-- Main Content -->
         
-<div class="post-preview-container" style="min-height: 576px">
-    
-    <div class="post-preview">
-        <div class="post-time">2019-04-14</div>
-        <div class="post-info">
-            <a href="/2019/04/14/result_api开始构建/">
-                <h3>
-                    Untitled
-                </h3>
-            </a>
-            <p>
-                
-            </p>
-        </div>
+
+
+<div class="post-container">
+    <div class="post-title">
+        
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-03-31</div>
-        <div class="post-info">
-            <a href="/2019/03/31/浮世万千，吾爱有三。日，月与卿。/">
-                <h3>
-                    初听不知曲中意，再听已是曲中人。
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#诗词" title="诗词">诗词</a>
-                <span>/</span>
-                
-                
-            </p>
-        </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-04-14 23:55:46</span></span>
+        
+        
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+
     </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-03-30</div>
-        <div class="post-info">
-            <a href="/2019/03/30/宏图的实现原理/">
-                <h3>
-                    宏图的实现原理
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#flask" title="flask">flask</a>
-                <span>/</span>
-                
-                
-            </p>
+    <div class="post-content ">
+        <p>REST_API搭建学习</p>
+<p>####前提<br>以前一直想搞个前后端分离的网站来玩玩，毕竟一直习惯用后端模板引擎（不过说起来好像也没怎么正经开发过，哈哈），想法是flask_restful+vue搭建一个网站</p>
+<p>#####项目目录<br><img src="./1555257165705.png" alt="Alt text"></p>
+
+        
+        <br>
+        <div id="comment-container">
         </div>
-    </div>
-    
-    <div class="post-preview">
-        <div class="post-time">2019-03-29</div>
-        <div class="post-info">
-            <a href="/2019/03/29/开始/">
-                <h3>
-                    开始
-                </h3>
-            </a>
-            <p>
-                
-                <span>/</span>
-                
-                <a class="tag" href="/tags/#杂记" title="杂记">杂记</a>
-                <span>/</span>
-                
-                
-            </p>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
         </div>
+
     </div>
-    
 </div>
-<ul class="pager">
-    
-    
-</ul>
 
     </div>
 </div>
@@ -242,12 +196,31 @@
     // We expose some of the variables needed by the front end
     window.hexo_search_path = "search.json"
     window.hexo_root = "/"
-    window.isPost = false
+    window.isPost = true
 </script>
 <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
 <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
+
+    <script>
+        /**
+         *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+         *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables
+        */
+        if( '' || '')
+        var disqus_config = function () {
+            this.page.url = '';  // Replace PAGE_URL with your page's canonical URL variable
+            this.page.identifier = ''; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+        };
+
+        (function() { // DON'T EDIT BELOW THIS LINE
+            var d = document, s = d.createElement('script');
+            s.src = 'https://airclouds-blog.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
+    </script>
 
 
 
