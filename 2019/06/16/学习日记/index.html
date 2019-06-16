@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="追光者的博客">
+    <meta name="keyword" content="回头">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        学习日记 - 时光不可追。
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 若心怀旧梦 别无疾而终。 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>追光者</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 若心怀旧梦 别无疾而终。 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        学习日记
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-06-16 23:36:53</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#vue" title="vue">vue</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <p>学习日记（简单权限，mock，vue相关知识）</p>
+<p>经常会进行自动化方面的测试，但是很头疼的是感觉多了的时候不是特别好维护，可能个人的问题，同事用的ddt来搭配数据，个人可能觉得写个自动化平台比较好玩吧，所以开始开发自动化测试平台，大体思路先开发一个简陋的平台来学习前端后台，后期再丰富</p>
+<p>1、<a href="http://www.easy-mock.com" target="_blank" rel="noopener">www.easy-mock.com</a>    专门用来mock接口数据的，太方便了，具体看看就好</p>
+<p>####一、后台权限控制<br>比较简陋，思路很简单，建立一个字典，key是api地址，value是对应能访问的角色权限，最后写个装饰器，token验证的时候取出用户名，查询数据库存的角色，然后判断是否有访问权限（结合数据库3张表实现，权限表，关联表，角色表）</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">create by --追光者</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="keyword">from</span> app.config.apipath <span class="keyword">import</span> *</span><br><span class="line"></span><br><span class="line">RolePermission_v1 = &#123;</span><br><span class="line">    Userapi.add: [<span class="string">'admin'</span>],</span><br><span class="line">    Userapi.edit: [<span class="string">'admin'</span>, <span class="string">'supadmin'</span>],</span><br><span class="line">    Userapi.select: [<span class="string">'admin'</span>, <span class="string">'supadmin'</span>, <span class="string">'nromal'</span>],</span><br><span class="line">    Userapi.delete: [<span class="string">'admin'</span>, <span class="string">'nromal'</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ispermission</span><span class="params">(path, role, version=<span class="string">'v1'</span>)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    判断权限的方法</span></span><br><span class="line"><span class="string">    :param path:  接口path</span></span><br><span class="line"><span class="string">    :param role:  用户角色</span></span><br><span class="line"><span class="string">    :return:  拥有权限则返回True，否则就False</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    path = path.split(<span class="string">'/'</span> + version)[<span class="number">1</span>]</span><br><span class="line">    permission = RolePermission_v1.get(path)</span><br><span class="line">    <span class="keyword">if</span> role <span class="keyword">in</span> permission:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">True</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<p>####类方法调用<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class User:</span><br><span class="line">	username=<span class="string">'test'</span></span><br><span class="line">	</span><br><span class="line">方法一：使用属性运算符</span><br><span class="line"></span><br><span class="line">User.username</span><br><span class="line"></span><br><span class="line">方法二：通过属性字典__dict__</span><br><span class="line"></span><br><span class="line">User.__dict__[<span class="string">'username'</span>]</span><br><span class="line"></span><br><span class="line">方法三：通过getattr函数</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">getattr</span><span class="params">(User, <span class="string">'username'</span>)</span></span></span><br></pre></td></tr></table></figure></p>
+<p>####二、js学习</p>
+<p>因为项目要求不多，基本就是实现增删改查即可，今天就写了一个页面实现了增删改查，但是权限这块还没想好怎么处理</p>
+<p><img src="https://wxt.sinaimg.cn/thumb300/80ff5c67ly1g43epzbfq2j21gp0sddh5.jpg?tags=%5B%5D" alt="页面总览"><br><img src="https://wxt.sinaimg.cn/thumb300/80ff5c67ly1g43epzfosvj21h70ret9t.jpg?tags=%5B%5D" alt><br><img src="https://wxt.sinaimg.cn/thumb300/80ff5c67ly1g43epzg02uj21h90qs75b.jpg?tags=%5B%5D" alt></p>
+<p>另外记录下今天处理数组用到的方法。</p>
+<p>1、push() 结尾添加</p>
+<pre><code>　　数组.push(元素)
+
+参数    描述
+newelement1    必需。要添加到数组的第一个元素。
+newelement2    可选。要添加到数组的第二个元素。
+newelementX    可选。可添加多个元素。
+</code></pre><p>2、unshift() 头部添加</p>
+<pre><code>　　数组.unshift(元素)
+
+参数    描述
+newelement1    必需。向数组添加的第一个元素。
+newelement2    可选。向数组添加的第二个元素。
+newelementX    可选。可添加若干个元素。
+</code></pre><p>3、splice() 方法向/从数组指定位置添加/删除项目，然后返回被删除的项目。</p>
+<pre><code>参数    描述
+index    必需。整数，规定添加/删除项目的位置，使用负数可从数组结尾处规定位置。
+howmany    必需。要删除的项目数量。如果设置为 0，则不会删除项目。
+item1, ..., itemX    可选。向数组添加的新项目。
+</code></pre><p>参考来源<a href="https://www.cnblogs.com/meng-ma-blogs/p/8352787.html" target="_blank" rel="noopener">https://www.cnblogs.com/meng-ma-blogs/p/8352787.html</a></p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/hf">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/追光者">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        Created By <a href="http://localhost">追光者</a> 主题来源至 <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a>
+     </p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
