@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="追光者的博客">
+    <meta name="keyword" content="回头">
+    <link rel="shortcut icon" href="/img/favicon.ico">
+
+    <title>
+        
+        flask_sqlalchemy 一对多，多对多 - 时光不可追。
+        
+    </title>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/aircloud.css">
+    <link rel="stylesheet" href="/css/gitment.css">
+    <!--<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">-->
+    <link href="//at.alicdn.com/t/font_620856_pl6z7sid89qkt9.css" rel="stylesheet" type="text/css">
+    <!-- ga & ba script hoook -->
+    <script></script>
+</head>
+
+<body>
+
+<div class="site-nav-toggle" id="site-nav-toggle">
+    <button>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+        <span class="btn-bar"></span>
+    </button>
+</div>
+
+<div class="index-about">
+    <i> 若心怀旧梦 别无疾而终。 </i>
+</div>
+
+<div class="index-container">
+    
+    <div class="index-left">
+        
+<div class="nav" id="nav">
+    <div class="avatar-name">
+        <div class="avatar">
+            <img src="/img/avatar.jpg">
+        </div>
+        <div class="name">
+            <i>追光者</i>
+        </div>
+    </div>
+    <div class="contents" id="nav-content">
+        <ul>
+            <li>
+                <a href="/">
+                    <i class="iconfont icon-shouye1"></i>
+                    <span>主页</span>
+                </a>
+            </li>
+            <li>
+                <a href="/tags">
+                    <i class="iconfont icon-biaoqian1"></i>
+                    <span>标签</span>
+                </a>
+            </li>
+            <li>
+                <a href="/archive">
+                    <i class="iconfont icon-guidang2"></i>
+                    <span>存档</span>
+                </a>
+            </li>
+            <li>
+                <a href="/about/">
+                    <i class="iconfont icon-guanyu2"></i>
+                    <span>关于</span>
+                </a>
+            </li>
+            
+            <li>
+                <a id="search">
+                    <i class="iconfont icon-sousuo1"></i>
+                    <span>搜索</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    
+        <div id="toc" class="toc-article">
+    
+</div>
+    
+</div>
+
+
+<div class="search-field" id="search-field">
+    <div class="search-container">
+        <div class="search-input">
+            <span id="esc-search"> <i class="icon-fanhui iconfont"></i></span>
+            <input id="search-input">
+            <span id="begin-search">搜索</span>
+        </div>
+        <div class="search-result-container" id="search-result-container">
+
+        </div>
+    </div>
+</div>
+        <div class="index-about-mobile">
+            <i> 若心怀旧梦 别无疾而终。 </i>
+        </div>
+    </div>
+    
+    <div class="index-middle">
+        <!-- Main Content -->
+        
+
+
+<div class="post-container">
+    <div class="post-title">
+        flask_sqlalchemy 一对多，多对多
+    </div>
+
+    <div class="post-meta">
+        <span class="attr">发布于：<span>2019-06-04 12:41:13</span></span>
+        
+        <span class="attr">标签：/
+        
+        <a class="tag" href="/tags/#flask" title="flask">flask</a>
+        <span>/</span>
+        
+        
+        </span>
+        <span class="attr">访问：<span id="busuanzi_value_page_pv"></span>
+</span>
+
+    </div>
+    <div class="post-content ">
+        <p>####一对多<br>假设两张表，学生表和班级表，那么一个班级可以对应多个学生，但是一个学生只能有一个班级，这时候就可以用到一对多了，<br><figure class="highlight haskell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Classmate</span>(<span class="title">db</span>.<span class="type">Model</span>):</span></span><br><span class="line"><span class="class">	__tablename__ = 'classmate'</span></span><br><span class="line"><span class="class">    id = db.<span class="type">Column</span>(<span class="title">db</span>.<span class="type">Integer</span>, <span class="title">primary_key</span>=<span class="type">True</span>)</span></span><br><span class="line"><span class="class">    student = db.relationship('<span class="type">Student</span>', <span class="title">backref</span>='<span class="title">classmate'</span>,<span class="title">lazy</span>='<span class="title">dynamic'</span>)</span></span><br><span class="line"><span class="class">    </span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="type">Student</span>(<span class="title">db</span>.<span class="type">Model</span>):</span></span><br><span class="line"><span class="class">	__tablename__ = 'student'</span></span><br><span class="line"><span class="class">    id = db.<span class="type">Column</span>(<span class="title">db</span>.<span class="type">Integer</span>, <span class="title">primary_key</span>=<span class="type">True</span>)</span></span><br><span class="line"><span class="class">    name = db.<span class="type">Column</span>(<span class="title">db</span>.<span class="type">String(50)</span>)</span></span><br><span class="line"><span class="class">    classmate_id = db.<span class="type">Column</span>(<span class="title">db</span>.<span class="type">Integer</span>, <span class="title">db</span>.<span class="type">ForeignKey</span>('<span class="title">classmate</span>.<span class="title">id'</span>))</span></span><br></pre></td></tr></table></figure></p>
+<p>1、首先建立两个模型，由于student表里多的一方因此在多的一方建立一个classmate_id 外键 classmate_id = db.Column(db.Integer, db.ForeignKey(‘classmate.id’)) ,db.ForeignKey关联对应表的某个字段</p>
+<p>2、如何才能真正关联起来呢，需要用到 db.relationship()方法，需给 Classmate 类加一个student 属性。student 并不是一个存在的字段，而是一个属性！该属性关联到了 Student 类，backref 指定反向引用的名称为 classmate，即 User 表访问这个属性就可以找到该班级下的所有学生！</p>
+<p>####多对多<br>假设有用户和角色，一个用户可以有多种角色（即是项目负责人，又是其他项目的成员），一个角色可以有多个用户，那么如下</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">permissions = db.Table(<span class="string">'permissions'</span>,</span><br><span class="line">                       db.Column(<span class="string">'user_id'</span>, db<span class="selector-class">.Integer</span>, db.ForeignKey(<span class="string">'user.id'</span>)),</span><br><span class="line">                       db.Column(<span class="string">'role_id'</span>, db<span class="selector-class">.Integer</span>, db.ForeignKey(<span class="string">'role.id'</span>))</span><br><span class="line">                       )</span><br><span class="line">                       </span><br><span class="line">class User(db.Model):</span><br><span class="line">	__tablename__ = <span class="string">'classmate'</span></span><br><span class="line">    id = db.Column(db<span class="selector-class">.Integer</span>, primary_key=True)</span><br><span class="line">    role = db.relationship(<span class="string">'Role'</span>, secondary=permissions, backref=db.backref(<span class="string">'user_role'</span>, lazy=<span class="string">'dynamic'</span>))</span><br><span class="line">    </span><br><span class="line">class Role(db.Model):</span><br><span class="line">    __tablename__ = <span class="string">'role'</span></span><br><span class="line">    id = db.Column(db<span class="selector-class">.Integer</span>, primary_key=True, comment=<span class="string">"主键"</span>)</span><br><span class="line">    role = db.Column(db.String(<span class="number">512</span>), comment=<span class="string">"用户角色"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">user1 = User(name=<span class="string">'测试1'</span>, username=<span class="string">'admin'</span>, password=<span class="string">'123456'</span>)</span><br><span class="line">user2 = User(name=<span class="string">'测试2'</span>, username=<span class="string">'test'</span>, password=<span class="string">'123456'</span>)</span><br><span class="line">role1 = Role(role=<span class="string">'管理员'</span>)</span><br><span class="line">role2 = Role(role=<span class="string">'普通用户'</span>)</span><br><span class="line">user1<span class="selector-class">.role</span> = [role1, role2]   #添加关联</span><br><span class="line">user2<span class="selector-class">.role</span> = [role1]</span><br><span class="line">db<span class="selector-class">.session</span><span class="selector-class">.add</span>(user1)</span><br><span class="line">db<span class="selector-class">.session</span><span class="selector-class">.add</span>(user2)</span><br><span class="line">db<span class="selector-class">.session</span><span class="selector-class">.commit</span>()</span><br><span class="line"></span><br><span class="line">user = Role<span class="selector-class">.query</span><span class="selector-class">.filter_by</span>(id=<span class="number">1</span>).first()</span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(user.role)</span></span></span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(user.user_role.first()</span></span>.name)</span><br><span class="line"></span><br><span class="line">user = User<span class="selector-class">.query</span><span class="selector-class">.filter_by</span>(id=<span class="number">1</span>).first()</span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(user.role)</span></span></span><br><span class="line"><span class="keyword">for</span> <span class="selector-tag">i</span> <span class="keyword">in</span> user<span class="selector-class">.role</span>:</span><br><span class="line">    print(<span class="selector-tag">i</span>.role)</span><br><span class="line">    </span><br><span class="line">roles=Role<span class="selector-class">.query</span><span class="selector-class">.filter_by</span>(id=<span class="number">1</span>).first()</span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(roles)</span></span></span><br><span class="line">user = User<span class="selector-class">.query</span><span class="selector-class">.filter_by</span>(id=<span class="number">1</span>).first()</span><br><span class="line">user<span class="selector-class">.role</span><span class="selector-class">.append</span>(roles)</span><br><span class="line">user<span class="selector-class">.role</span><span class="selector-class">.remove</span>(roles)</span><br><span class="line">db<span class="selector-class">.session</span><span class="selector-class">.commit</span>()</span><br><span class="line">    </span><br><span class="line">roles=Role<span class="selector-class">.query</span><span class="selector-class">.filter_by</span>(id=<span class="number">1</span>).first()</span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(roles)</span></span></span><br><span class="line">user = User<span class="selector-class">.query</span><span class="selector-class">.filter_by</span>(id=<span class="number">2</span>).first()</span><br><span class="line"><span class="function"><span class="title">print</span><span class="params">(user)</span></span></span><br><span class="line">user<span class="selector-class">.role</span><span class="selector-class">.remove</span>(roles)</span><br><span class="line">db<span class="selector-class">.session</span><span class="selector-class">.commit</span>()</span><br></pre></td></tr></table></figure>
+<p>1、首先建立个额外权限表，flask_SQLAlchemy 建议不要用模型直接建表，那整个权限表里有两个字段分别是用户id和角色id，db.Table()，第一个参数是表名称，第二个是字段名称，类型，关联的外键字段</p>
+<p>2、如何才能真正关联起来呢，还是用 db.relationship()方法，但是不同的是要多加一个secondary，来关联权限表，这样就可以用Role对象.user_role /Use.role来获取用户对象了,具体查看上面的用法</p>
+<p>参考<a href="https://www.cnblogs.com/wangxiaoqiangs/p/7495973.html，https://www.cnblogs.com/huchong/p/8797516.html#_label2" target="_blank" rel="noopener">https://www.cnblogs.com/wangxiaoqiangs/p/7495973.html，https://www.cnblogs.com/huchong/p/8797516.html#_label2</a><br><a href="https://www.cnblogs.com/chichung/p/9794850.html" target="_blank" rel="noopener">https://www.cnblogs.com/chichung/p/9794850.html</a><br><a href="https://docs.sqlalchemy.org/en/13/orm/basic_relationships.html#many-to-many" target="_blank" rel="noopener">https://docs.sqlalchemy.org/en/13/orm/basic_relationships.html#many-to-many</a></p>
+
+        
+        <br>
+        <div id="comment-container">
+        </div>
+        <div id="disqus_thread"></div>
+
+        <div id="lv-container">
+        </div>
+
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<footer class="footer">
+    <ul class="list-inline text-center">
+        
+        
+
+        
+
+        
+        <li>
+            <a target="_blank" href="https://www.facebook.com/hf">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-facebook"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+        <li>
+            <a target="_blank" href="https://github.com/追光者">
+                            <span class="fa-stack fa-lg">
+                                <i class="iconfont icon-github"></i>
+                            </span>
+            </a>
+        </li>
+        
+
+        
+
+    </ul>
+    
+    <p>
+        Created By <a href="http://localhost">追光者</a> 主题来源至 <a href="https://github.com/aircloud/hexo-theme-aircloud">AirCloud</a>
+     </p>
+</footer>
+
+
+
+
+</body>
+
+<script>
+    // We expose some of the variables needed by the front end
+    window.hexo_search_path = "search.json"
+    window.hexo_root = "/"
+    window.isPost = true
+</script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="/js/index.js"></script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+</html>
